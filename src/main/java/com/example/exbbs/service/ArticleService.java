@@ -32,4 +32,12 @@ public class ArticleService {
     public void postArticle(Article article) {
         articleRepository.insert(article);
     }
+
+    /**
+     * 記事を一件削除する
+     * @param id 削除対象の記事ID
+     */
+    public void deleteArticle(Integer id) {
+        articleRepository.deleteById(id);
+    }
 }

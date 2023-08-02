@@ -20,13 +20,20 @@
     <section th:each="article: ${application.articleList}" style="border: 1px solid black; width: 300px;">
         <p>投稿者名： <span th:text="${article.name}"></span></p>
         <p>投稿内容：<br><span th:text="${article.content}"></span></p>
-        <section th:each="comment: ${application.commentList}" th:if="${comment.articleId == article.id}" style="background-color: gainsboro; width: 100%;">
+        <form th:action="@{/deleteArticle(id=${article.id})}" method="post">
+            <button type="submit">記事削除</button>
+        </form>
+
+        <section th:each="comment: ${application.commentList}" th:if="${comment.articleId == article.id}"
+            style="background-color: gainsboro; width: 100%;">
             <p>コメント者名： <span th:text="${comment.name}"></span></p>
             <p>コメント内容：<br><span th:text="${comment.content}"></span></p>
         </section>
+
         <form action="#" th:action="@{/insertComment}" method="post">
             <label for="name">名前：<br><input type="text" name="name" id="name"></label><br>
-            <label for="content">コメント：<br><textarea name="content" id="content" cols="30" rows="3"></textarea></label><br>
+            <label for="content">コメント：<br><textarea name="content" id="content" cols="30"
+                    rows="3"></textarea></label><br>
             <input type="text" name="articleId" id="articleId" th:value="${article.id}" hidden>
             <button type="submit">コメント投稿</button>
         </form>
