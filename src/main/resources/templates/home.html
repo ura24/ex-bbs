@@ -20,6 +20,10 @@
     <section th:each="article: ${application.articleList}" style="border: 1px solid black; width: 300px;">
         <p>投稿者名： <span th:text="${article.name}"></span></p>
         <p>投稿内容：<br><span th:text="${article.content}"></span></p>
+        <section th:each="comment: ${application.commentList}" th:if="${comment.articleId == article.id}" style="background-color: gainsboro; width: 100%;">
+            <p>コメント者名： <span th:text="${comment.name}"></span></p>
+            <p>コメント内容：<br><span th:text="${comment.content}"></span></p>
+        </section>
     </section>
 </body>
 
