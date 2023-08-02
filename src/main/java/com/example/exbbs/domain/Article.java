@@ -1,5 +1,7 @@
 package com.example.exbbs.domain;
 
+import java.util.List;
+
 public class Article {
     /** 投稿ID */
     private Integer id;
@@ -7,6 +9,8 @@ public class Article {
     private String name;
     /** 記事内容 */
     private String content;
+    /** コメントリスト */
+    private List<Comment> commentList;
     
     public Integer getId() {
         return id;
@@ -26,9 +30,15 @@ public class Article {
     public void setContent(String content) {
         this.content = content;
     }
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
 
     @Override
     public String toString() {
-        return "Article [id=" + id + ", name=" + name + ", content=" + content + "]";
+        return "Article [id=" + id + ", name=" + name + ", content=" + content + ", commentList=" + commentList + "]";
     }
 }
