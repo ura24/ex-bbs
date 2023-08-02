@@ -9,7 +9,15 @@ public class Comment {
     private String content;
     /** 投稿ID */
     private Integer articleId;
+
+    public Comment() {}
     
+    public Comment(String name, String content, Integer articleId) {
+        this.name = name;
+        this.content = content;
+        this.articleId = articleId;
+    }
+
     public Integer getId() {
         return id;
     }

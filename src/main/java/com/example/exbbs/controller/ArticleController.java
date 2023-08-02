@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.exbbs.domain.Article;
 import com.example.exbbs.domain.Comment;
 import com.example.exbbs.form.ArticleForm;
+import com.example.exbbs.form.CommentForm;
 import com.example.exbbs.service.ArticleService;
 import com.example.exbbs.service.CommentService;
 
@@ -37,9 +38,17 @@ public class ArticleController {
         return "home";
     }
 
-    @PostMapping("/post")
-    public String post(ArticleForm articleForm) {
-        articleService.postArticle(articleForm.getName(), articleForm.getContent());
+    @PostMapping("/insertArticle")
+    public String insertArticle(ArticleForm articleForm) {
+        Article article = new Article(articleForm.getName(), articleForm.getContent());
+        articleService.postArticle(article);
+        return "redirect:/";
+    }
+
+    @PostMapping("/insertComment")
+    public String insertComment(CommentForm commentForm) {
+        Comment comment = new Comment(commentForm.getName(), commentForm.getContent(), Integer.valueOf(commentForm.getArticleId()));
+        commentService.postComment(comment);
         return "redirect:/";
     }
 }

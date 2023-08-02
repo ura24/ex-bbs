@@ -29,7 +29,7 @@ public class ArticleService {
      * @param name 投稿者名
      * @param content 投稿内容
      */
-    public void postArticle(String name, String content) {
-        articleRepository.insert(name, content);
+    public void postArticle(Article article) {
+        articleRepository.insert(article);
     }
 }

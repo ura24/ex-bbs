@@ -10,7 +10,7 @@
 <body>
     <h1>掲示板</h1>
     <h2>記事入力</h2>
-    <form action="#" th:action="@{/post}" method="post">
+    <form action="#" th:action="@{/insertArticle}" method="post">
         <label for="name">投稿者名：<br><input type="text" name="name" id="name"></label><br>
         <label for="content">投稿内容：<br><textarea name="content" id="content" cols="30" rows="3"></textarea></label><br>
         <button type="submit">記事投稿</button>
@@ -24,6 +24,12 @@
             <p>コメント者名： <span th:text="${comment.name}"></span></p>
             <p>コメント内容：<br><span th:text="${comment.content}"></span></p>
         </section>
+        <form action="#" th:action="@{/insertComment}" method="post">
+            <label for="name">名前：<br><input type="text" name="name" id="name"></label><br>
+            <label for="content">コメント：<br><textarea name="content" id="content" cols="30" rows="3"></textarea></label><br>
+            <input type="text" name="articleId" id="articleId" th:value="${article.id}" hidden>
+            <button type="submit">コメント投稿</button>
+        </form>
     </section>
 </body>
 

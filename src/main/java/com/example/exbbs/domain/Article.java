@@ -11,7 +11,14 @@ public class Article {
     private String content;
     /** コメントリスト */
     private List<Comment> commentList;
+
+    public Article() {}
     
+    public Article(String name, String content) {
+        this.name = name;
+        this.content = content;
+    }
+
     public Integer getId() {
         return id;
     }

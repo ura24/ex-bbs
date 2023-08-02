@@ -23,4 +23,8 @@ public class CommentService {
     public List<Comment> showList() {
         return commentRepository.findAll();
     }
+
+    public void postComment(Comment comment) {
+        commentRepository.insert(comment);
+    }
 }
