@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ex-bbs</title>
 </head>
+
 <body>
-    <h1>記事一覧</h1>
-    <section th:each="article: ${articleList}">
+    <h1>掲示板</h1>
+    <h2>記事入力</h2>
+    <form action="#" th:action="@{/post}" method="post">
+        <label for="name">投稿者名：<br><input type="text" name="name" id="name"></label><br>
+        <label for="content">投稿内容：<br><textarea name="content" id="content" cols="30" rows="3"></textarea></label><br>
+        <button type="submit">記事投稿</button>
+    </form>
+
+    <h2>記事一覧</h2>
+    <section th:each="article: ${application.articleList}" style="border: 1px solid black; width: 300px;">
         <p>投稿者名： <span th:text="${article.name}"></span></p>
         <p>投稿内容：<br><span th:text="${article.content}"></span></p>
     </section>
 </body>
+
 </html>
