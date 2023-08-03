@@ -10,9 +10,11 @@
 <body>
     <h1>掲示板</h1>
     <h2>記事入力</h2>
-    <form action="#" th:action="@{/insertArticle}" method="post">
-        <label for="name">投稿者名：<br><input type="text" name="name" id="name"></label><br>
-        <label for="content">投稿内容：<br><textarea name="content" id="content" cols="30" rows="3"></textarea></label><br>
+    <form action="#" th:action="@{/insertArticle}" method="post" th:object="${articleForm}">
+        <div th:errors="*{name}" style="color:red">エラー!</div>
+        <label for="name">投稿者名：<br><input type="text" name="name" id="name" th:field="*{name}"></label><br>
+        <label for="content">投稿内容：<br><textarea name="content" id="content" cols="30" rows="3"
+                th:field="*{content}"></textarea></label><br>
         <button type="submit">記事投稿</button>
     </form>
 
@@ -24,7 +26,7 @@
             <button type="submit">記事削除</button>
         </form>
 
-        <section th:each="comment: ${application.commentList}" th:if="${comment.articleId == article.id}"
+        <section th:each="comment: ${article.commentList}" th:if="${comment.articleId == article.id}"
             style="background-color: gainsboro; width: 100%;">
             <p>コメント者名： <span th:text="${comment.name}"></span></p>
             <p>コメント内容：<br><span th:text="${comment.content}"></span></p>

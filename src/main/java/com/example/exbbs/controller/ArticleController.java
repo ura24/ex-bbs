@@ -33,8 +33,6 @@ public class ArticleController {
     public String index(Model model, ArticleForm articleForm) {
         List<Article> articleList = articleService.showList();
         application.setAttribute("articleList", articleList);
-        List<Comment> commentList = commentService.showList();
-        application.setAttribute("commentList", commentList);
         return "home";
     }
 
