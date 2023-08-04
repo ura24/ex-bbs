@@ -36,11 +36,11 @@
             <p>コメント内容：<br><span th:text="${comment.content}"></span></p>
         </section>
 
-        <form action="#" th:action="@{/insertComment}" method="post">
-            <label for="name">名前：<br><input type="text" name="name" id="name"></label><br>
+        <form action="#" th:action="@{/insertComment}" th:object="${commentForm}" method="post">
+            <input hidden name="articleId" th:value="${article.id}">
+            <label for="name">名前：<br><input type="text" name="name" id="name" th:field="*{name}"></label><br>
             <label for="content">コメント：<br><textarea name="content" id="content" cols="30"
-                    rows="3"></textarea></label><br>
-            <input type="text" name="articleId" id="articleId" th:value="${article.id}" hidden>
+                    rows="3" th:field="*{content}"></textarea></label><br>
             <button type="submit">コメント投稿</button>
         </form>
     </section>

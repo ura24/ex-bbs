@@ -32,16 +32,16 @@ public class ArticleController {
     private CommentService commentService;
 
     @GetMapping("")
-    public String index(Model model, ArticleForm articleForm) {
+    public String index(Model model, ArticleForm articleForm, CommentForm commentForm) {
         List<Article> articleList = articleService.showList();
         application.setAttribute("articleList", articleList);
         return "home";
     }
 
     @PostMapping("/insertArticle")
-    public String insertArticle(@Validated ArticleForm articleForm, BindingResult result, Model model) {
+    public String insertArticle(@Validated ArticleForm articleForm, BindingResult result, CommentForm commentForm, Model model) {
         if (result.hasErrors()) {
-            return index(model, articleForm);
+            return index(model, articleForm, commentForm);
         }
         Article article = new Article(articleForm.getName(), articleForm.getContent());
         articleService.postArticle(article);
